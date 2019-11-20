@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "997622298138",
+    "firebase_url": "https://food-delivery-ed994.firebaseio.com",
+    "project_id": "food-delivery-ed994",
+    "storage_bucket": "food-delivery-ed994.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:997622298138:android:4d8d071decef0882b003a3",
+        "android_client_info": {
+          "package_name": "com.owen.fooddelivery"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "997622298138-845610r89v35t2cttnk70b8u3h1l3sp1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.owen.fooddelivery",
+            "certificate_hash": "beaf0dfa9bc65bc452a265e66b3fb0b185515a1f"
+          }
+        },
+        {
+          "client_id": "997622298138-anjo4dht7esplstbhp4jeqncg3rusfg4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYO4gM3ku0Wb8dGXzYtUPL1KRiW3XdFzk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "997622298138-anjo4dht7esplstbhp4jeqncg3rusfg4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

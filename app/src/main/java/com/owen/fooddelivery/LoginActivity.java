@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.owen.fooddelivery.Model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -43,7 +45,16 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot)
                     {
-
+                        //get user information
+                        User user = dataSnapshot.child(etPhone.getText().toString()).getValue(User.class);
+                        if (user.getPassword().equals(etPassword.getText().toString()))
+                        {
+                            Toast.makeText(LoginActivity.this , "Signed in successsfully", Toast.LENGTH_LONG).show();
+                        }
+                        else
+                        {
+                            Toast.makeText(LoginActivity.this , "Signed failed !!!", Toast.LENGTH_LONG).show();
+                        }
                     }
 
                     @Override

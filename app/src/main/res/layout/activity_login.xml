@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/my_bg"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/login_appLogo"
@@ -92,7 +92,7 @@
         android:textSize="18sp"
         android:padding="17dp"
         android:textColor="@android:color/white"
-        android:background="color/blue"
+        android:background="@drawable/buttons"
         android:textAllCaps="false"
         android:text="Login"/>
     <TextView
@@ -124,6 +124,5 @@
         android:layout_marginStart="25dp"
         android:layout_alignParentLeft="true"
         android:visibility="invisible"/>
-
 
 </RelativeLayout>

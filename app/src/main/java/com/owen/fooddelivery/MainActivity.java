@@ -8,6 +8,7 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnLogin;
+    private EditText editText;
 
 
     protected void onCreate(Bundle savedInstanceState)

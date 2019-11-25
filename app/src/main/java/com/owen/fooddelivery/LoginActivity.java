@@ -3,6 +3,7 @@ package com.owen.fooddelivery;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,12 +24,17 @@ public class LoginActivity extends AppCompatActivity {
     private EditText etPassword, etPhone;
     private FirebaseAuth mAuth;
     private FirebaseDatabase database;
+    private ProgressDialog mdialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mdialog = new ProgressDialog(LoginActivity.this);
+        mdialog.setMessage("Please wait,,,,,,");
+        mdialog.show();
 
         database = FirebaseDatabase.getInstance();
         final DatabaseReference table_user = database.getReference("User");
@@ -43,17 +49,20 @@ public class LoginActivity extends AppCompatActivity {
             {
                 table_user.addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot)
-                    {
-                        //get user information
-                        User user = dataSnapshot.child(etPhone.getText().toString()).getValue(User.class);
-                        if (user.getPassword().equals(etPassword.getText().toString()))
-                        {
-                            Toast.makeText(LoginActivity.this , "Signed in successsfully", Toast.LENGTH_LONG).show();
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        //get user information and check if he  exists or not
+                        if (dataSnapshot.child(etPhone.getText().toString()).exists()) {
+                            mdialog.dismiss();
+                            User user = dataSnapshot.child(etPhone.getText().toString()).getValue(User.class);
+                            if (user.getPassword().equals(etPassword.getText().toString())) {
+                                Toast.makeText(LoginActivity.this, "Signed in successsfully", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(LoginActivity.this, "Signed failed !!!", Toast.LENGTH_LONG).show();
+                            }
                         }
                         else
                         {
-                            Toast.makeText(LoginActivity.this , "Signed failed !!!", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "User Not Found in Database", Toast.LENGTH_LONG).show();
                         }
                     }
 
